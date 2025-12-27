@@ -1,0 +1,28 @@
+<div id="depositPage" class="page">
+    <div class="header">
+        <button onclick="showPage('lobby')" style="background:none;border:none;color:white;position:absolute;left:15px;top:20px;font-size:1.2rem;cursor:pointer;">←</button>
+        <h2>💰 Deposit</h2>
+        <p>Room: <span id="selectedRoomPrice">0</span> ETB</p>
+    </div>
+    
+    <div style="background:#fff7e6; padding:15px; border-radius:12px; border:1px solid #ffd591; margin-bottom:15px;">
+        <p style="font-size:0.85rem; color:#874d00; text-align:center;">Send <b><span id="depositAmount">0</span> ETB</b> to one of the accounts below and click SUMMIT.</p>
+    </div>
+
+    <!-- TeleBirr Payment Box -->
+    <div class="payment-box">
+        <div style="font-weight: bold; color: #009b3a; margin-bottom: 5px;">📱 TeleBirr</div>
+        <div style="font-size: 1.3rem; letter-spacing: 1px; margin: 10px 0; color: #333;">0921302111</div>
+        <button class="btn btn-blue" style="width: auto; padding: 8px 20px; font-size: 0.8rem;" onclick="copyText('0921302111')">📋 Copy Number</button>
+    </div>
+
+    <!-- CBE Payment Box -->
+    <div class="payment-box" style="border-color: #009b3a; background: #f0fdf4;">
+        <div style="font-weight: bold; color: #009b3a; margin-bottom: 5px;">🏦 CBE Bank</div>
+        <div style="font-size: 1.3rem; letter-spacing: 1px; margin: 10px 0; color: #333;">1000318833625</div>
+        <button class="btn btn-green" style="width: auto; padding: 8px 20px; font-size: 0.8rem;" onclick="copyText('1000318833625')">📋 Copy Account</button>
+    </div>
+
+    <!-- Changed button text to SUMMIT -->
+    <button class="btn btn-green" onclick="confirmDeposit()">✅ SUMMIT</button>
+</div>

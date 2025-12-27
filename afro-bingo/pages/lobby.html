@@ -1,0 +1,71 @@
+<div id="lobbyPage" class="page">
+    <div class="header">
+        <h1>🎮 AFRO-BINGO 🇪🇹</h1>
+        <p>Win Big with Every Number</p>
+    </div>
+
+    <div class="profile-mini">
+        <div>
+            <div style="font-size: 0.9rem; font-weight: bold;" id="displayName">Loading...</div>
+            <div style="font-size: 0.75rem; color: #666;" id="displayPhone">No Phone</div>
+        </div>
+        <button class="btn btn-outline" style="width: auto; padding: 5px 15px;" onclick="showPage('profile')">Edit Profile</button>
+    </div>
+
+    <div class="balance-box" style="background: #009b3a; color: white; padding: 15px; border-radius: 12px; margin-bottom: 15px; text-align: center;">
+        <div style="font-size: 0.8rem; opacity: 0.9;">Your Balance</div>
+        <div style="font-size: 1.8rem; font-weight: bold;"><span class="userBalance">0</span> ETB</div>
+    </div>
+
+    <div class="room-card" onclick="selectRoom(100)" style="background: white; border: 2px solid #009b3a; border-radius: 12px; padding: 15px; margin: 10px 0; cursor: pointer;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 1.2rem; font-weight: bold; color: #009b3a;">100 ETB Room</span>
+            <span style="background: #ef3340; color: white; padding: 2px 8px; border-radius: 5px; font-size: 0.8rem;">Win 200!</span>
+        </div>
+    </div>
+    
+    <div class="room-card" onclick="selectRoom(50)" style="background: white; border: 2px solid #ddd; border-radius: 12px; padding: 15px; margin: 10px 0; cursor: pointer;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 1.2rem; font-weight: bold; color: #333;">50 ETB Room</span>
+            <span style="background: #0039a6; color: white; padding: 2px 8px; border-radius: 5px; font-size: 0.8rem;">Win 100!</span>
+        </div>
+    </div>
+
+    <div class="room-card" onclick="selectRoom(20)" style="background: white; border: 2px solid #ddd; border-radius: 12px; padding: 15px; margin: 10px 0; cursor: pointer;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 1.2rem; font-weight: bold; color: #333;">20 ETB Room</span>
+            <span style="background: #666; color: white; padding: 2px 8px; border-radius: 5px; font-size: 0.8rem;">Win 40!</span>
+        </div>
+    </div>
+    
+    <!-- Support Team Button -->
+    <button class="btn support-team-btn" onclick="showSupportTeam()">
+        🆘 Support Team
+    </button>
+    
+    <!-- Admin Button (Only shows when admin is logged in) -->
+    <div id="adminButtonContainer" style="margin-top: 10px;">
+        <!-- Button will appear here when admin is logged in -->
+    </div>
+</div>
+
+<!-- Profile Page (embedded in lobby) -->
+<div id="profilePage" class="page" style="display: none;">
+    <div class="header">
+        <button onclick="showPage('lobby')" style="background:none;border:none;color:white;position:absolute;left:15px;top:20px;font-size:1.2rem;cursor:pointer;">←</button>
+        <h2>👤 My Profile</h2>
+    </div>
+
+    <div class="input-group">
+        <label>Full Name (for Payouts)</label>
+        <input type="text" id="editName" placeholder="Enter your name">
+    </div>
+
+    <div class="input-group">
+        <label>Phone Number (TeleBirr)</label>
+        <input type="tel" id="editPhone" placeholder="09... or 07...">
+    </div>
+
+    <button class="btn btn-green" onclick="saveProfile()">💾 Save Profile Info</button>
+    <button class="btn btn-outline" onclick="showPage('lobby')">Cancel</button>
+</div>

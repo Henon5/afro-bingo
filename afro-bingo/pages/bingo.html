@@ -1,0 +1,101 @@
+<div id="bingoPage" class="page">
+    <!-- Waiting for Confirmation Screen -->
+    <div id="waitingScreen" class="waiting-screen" style="display: none;">
+        <div class="header">
+            <h3>⏳ Waiting for Confirmation</h3>
+            <p style="font-size: 0.9rem; opacity: 0.8;">Your payment is being verified</p>
+        </div>
+        
+        <div class="spinner"></div>
+        
+        <p style="margin: 20px 0 10px; font-weight: bold;">Room: <span id="waitingRoomAmount">20</span> ETB</p>
+        
+        <div style="background: #e8f5e9; padding: 15px; border-radius: 10px; margin: 15px 0;">
+            <p style="font-size: 0.9rem; margin-bottom: 10px;">
+                <strong>IMPORTANT:</strong> Send your payment proof to:
+            </p>
+            <div style="background: #ffffff; padding: 10px; border-radius: 8px; border: 2px dashed #009b3a;">
+                <p style="font-weight: bold; color: #0088cc; font-size: 1.1rem;">@rasenok</p>
+            </div>
+            <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">
+                Send the transfer link or screenshot to Telegram
+            </p>
+        </div>
+        
+        <button class="btn btn-blue" onclick="openTelegram()" style="margin-bottom: 10px;">
+            📱 Open Telegram Now
+        </button>
+        
+        <button class="btn btn-green" onclick="checkConfirmation()" id="playButton" style="display: none;">
+            🎮 Play Game
+        </button>
+        
+        <button class="btn btn-outline" onclick="exitWaiting()">
+            ← Back to Lobby
+        </button>
+    </div>
+    
+    <!-- Actual Game Screen (Initially Hidden) -->
+    <div id="gameScreen" style="display: none;">
+        <div class="header" style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="text-align:left;">
+                <h3 style="font-size: 1rem;">AFRO-BINGO</h3>
+                <span style="font-size: 0.7rem; opacity:0.8;">Room: <span id="currentRoom">20</span> ETB</span>
+            </div>
+            <div style="text-align:right;">
+                <div style="font-size: 1.1rem; font-weight:bold;"><span id="gameBalance">0</span> ETB</div>
+            </div>
+        </div>
+        
+        <!-- Statistics Boxes -->
+        <div class="stats-container">
+            <div class="stat-box">
+                <h4>🎯 Matches</h4>
+                <div class="stat-value" id="matchesCount">0</div>
+            </div>
+            <div class="stat-box">
+                <h4>🏆 Total Wins</h4>
+                <div class="stat-value" id="totalWins">0</div>
+            </div>
+            <div class="stat-box">
+                <h4>⏱️ Time</h4>
+                <div class="stat-value" id="gameTimer">00:00</div>
+            </div>
+            <div class="stat-box">
+                <h4>🎰 Numbers</h4>
+                <div class="stat-value" id="numbersCalled">0/75</div>
+            </div>
+        </div>
+        
+        <!-- Number History Box -->
+        <div class="history-box">
+            <div class="history-title">📜 Called Numbers (<span id="totalNumbersCalled">0</span> total)</div>
+            <div class="numbers-list" id="numbersHistory"></div>
+        </div>
+        
+        <!-- Game Info Row -->
+        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+            <div style="flex: 1; background: #e3f2fd; padding: 10px; border-radius: 10px; text-align: center;">
+                <small>Prize</small><br><b><span id="prizePool">0</span> ETB</b>
+            </div>
+            <div style="flex: 1; background: #f0fdf4; padding: 10px; border-radius: 10px; text-align: center;">
+                <small>Calls</small><br><b><span id="callCount">0</span>/75</b>
+            </div>
+        </div>
+
+        <div class="big-display" id="currentNumberDisplay">Ready</div>
+        
+        <table class="bingo-table" id="bingoCard"></table>
+        
+        <!-- Game Controls -->
+        <div style="display:grid; grid-template-columns: 2fr 1.2fr; gap:10px; margin-top: 10px;">
+            <button class="btn btn-green" id="btnMain" onclick="toggleAutoPlay()">▶ Start Game</button>
+            <button class="btn btn-red" onclick="verifyBingo()">BINGO!</button>
+        </div>
+        
+        <div style="display: flex; gap: 10px; margin-top: 10px;">
+            <button class="btn btn-blue" onclick="generateNewCard()" style="flex: 1;">🔄 New Card</button>
+            <button class="btn btn-outline" onclick="exitGame()" style="flex: 1;">🚪 Exit Lobby</button>
+        </div>
+    </div>
+</div>

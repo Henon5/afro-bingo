@@ -1,0 +1,147 @@
+<div id="adminPage" class="page">
+    <div class="admin-header">
+        <button onclick="showPage('lobby')" style="background:none;border:none;color:white;position:absolute;left:15px;top:20px;font-size:1.2rem;cursor:pointer;">←</button>
+        <h2>🔧 Admin Panel</h2>
+        <p style="font-size: 0.9rem; opacity: 0.9;">Welcome, Admin</p>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
+        <div style="background: #009b3a; color: white; padding: 10px; border-radius: 10px; text-align: center;">
+            <small>Total Players</small><br>
+            <b id="totalPlayers">0</b>
+        </div>
+        <div style="background: #ef3340; color: white; padding: 10px; border-radius: 10px; text-align: center;">
+            <small>Pending Requests</small><br>
+            <b id="pendingCount">0</b>
+        </div>
+        <div style="background: #0039a6; color: white; padding: 10px; border-radius: 10px; text-align: center;">
+            <small>Total Deposits</small><br>
+            <b id="totalDepositsAmount">0 ETB</b>
+        </div>
+        <div style="background: #9c27b0; color: white; padding: 10px; border-radius: 10px; text-align: center;">
+            <small>Total Winnings</small><br>
+            <b id="totalWinningsAmount">0 ETB</b>
+        </div>
+    </div>
+    
+    <!-- Search Players -->
+    <div class="admin-card">
+        <h4 style="margin-bottom: 15px;">🔍 Search Player</h4>
+        <div class="input-group">
+            <label>Search by Phone Number or Name</label>
+            <input type="text" id="searchPlayer" placeholder="Enter phone or name" onkeyup="searchPlayers()">
+        </div>
+        <div id="searchResults" style="max-height: 200px; overflow-y: auto; margin-top: 10px;">
+            <!-- Search results will appear here -->
+        </div>
+    </div>
+    
+    <!-- Pending Approvals Section -->
+    <div class="admin-card">
+        <h4 style="margin-bottom: 15px;">⏳ Pending Approval Requests</h4>
+        <div id="pendingList">
+            <!-- Pending requests will appear here -->
+            <p style="text-align: center; color: #666; padding: 20px;" id="noPendingText">No pending requests</p>
+        </div>
+    </div>
+    
+    <!-- Manual Balance Adjustment -->
+    <div class="admin-card">
+        <h4 style="margin-bottom: 15px;">💰 Manual Balance Adjustment</h4>
+        <div class="input-group">
+            <label>Player Phone Number</label>
+            <input type="tel" id="adminPlayerPhone" placeholder="09... or 07...">
+        </div>
+        <div class="input-group">
+            <label>Player Name</label>
+            <input type="text" id="adminPlayerName" placeholder="Player name">
+        </div>
+        <div class="input-group">
+            <label>Amount (ETB)</label>
+            <input type="number" id="adminAmount" placeholder="Enter amount">
+        </div>
+        <div style="display: flex; gap: 10px;">
+            <button class="btn btn-green" style="flex: 1;" onclick="adminAddBalance()">➕ Add Balance</button>
+            <button class="btn btn-red" style="flex: 1;" onclick="adminRemoveBalance()">➖ Remove Balance</button>
+        </div>
+    </div>
+    
+    <!-- System Stats -->
+    <div class="admin-card">
+        <h4 style="margin-bottom: 15px;">📊 System Statistics</h4>
+        <div id="systemStats">
+            <p>Total Games Played: <b id="totalGames">0</b></p>
+            <p>Total Winnings Distributed: <b id="totalWinnings">0 ETB</b></p>
+            <p>Total Deposits Received: <b id="totalDeposits">0 ETB</b></p>
+            <p>Active Players Today: <b id="activePlayers">0</b></p>
+        </div>
+    </div>
+    
+    <!-- Danger Zone -->
+    <div class="admin-card" style="border-left-color: #ef3340;">
+        <h4 style="margin-bottom: 15px; color: #ef3340;">⚠️ Danger Zone</h4>
+        <button class="btn btn-outline" style="border-color: #ef3340; color: #ef3340;" onclick="adminResetAll()">
+            🔄 Reset All Data
+        </button>
+        <button class="btn btn-outline" style="border-color: #ef3340; color: #ef3340; margin-top: 10px;" onclick="adminExportData()">
+            📥 Export All Data
+        </button>
+        <button class="btn btn-outline" style="border-color: #ef3340; color: #ef3340; margin-top: 10px;" onclick="adminClearPending()">
+            🗑️ Clear All Pending
+        </button>
+    </div>
+    
+    <!-- Admin Login (Hidden by default) -->
+    <div id="adminLogin" style="display: none; margin-top: 20px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+        <h4 style="margin-bottom: 15px;">🔐 Admin Login</h4>
+        <div class="input-group">
+            <label>Admin Password</label>
+            <input type="password" id="adminPassword" placeholder="Enter admin password">
+        </div>
+        <button class="btn btn-green" onclick="adminLogin()">Login</button>
+    </div>
+</div>
+
+<style>
+.admin-header {
+    background: linear-gradient(135deg, #333, #555); color: white;
+    padding: 15px; border-radius: 12px; margin-bottom: 15px;
+    position: relative;
+}
+
+.admin-card {
+    background: white; border-radius: 12px; padding: 15px;
+    margin-bottom: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-left: 4px solid #009b3a;
+}
+
+.pending-request {
+    background: #fff3cd; border: 2px solid #ffc107; border-radius: 10px;
+    padding: 15px; margin-bottom: 10px;
+}
+
+.player-info {
+    background: #f8f9fa; padding: 10px; border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.admin-btn-group {
+    display: flex; gap: 10px; margin-top: 10px;
+}
+
+.player-item-admin {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px; margin: 5px 0; background: #f8f9fa;
+    border-radius: 8px; border-left: 4px solid #009b3a;
+    cursor: pointer;
+}
+
+.player-item-admin:hover {
+    background: #e9ecef;
+}
+
+.player-balance {
+    background: #009b3a; color: white; padding: 2px 8px;
+    border-radius: 10px; font-size: 0.8rem;
+}
+</style>

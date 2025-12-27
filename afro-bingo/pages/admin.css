@@ -1,0 +1,42 @@
+/* Admin Styles */
+.admin-header {
+    background: linear-gradient(135deg, #333, #555); color: white;
+    padding: 15px; border-radius: 12px; margin-bottom: 15px;
+    position: relative;
+}
+
+.admin-card {
+    background: white; border-radius: 12px; padding: 15px;
+    margin-bottom: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-left: 4px solid #009b3a;
+}
+
+.pending-request {
+    background: #fff3cd; border: 2px solid #ffc107; border-radius: 10px;
+    padding: 15px; margin-bottom: 10px;
+}
+
+.player-info {
+    background: #f8f9fa; padding: 10px; border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.admin-btn-group {
+    display: flex; gap: 10px; margin-top: 10px;
+}
+
+.player-item-admin {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px; margin: 5px 0; background: #f8f9fa;
+    border-radius: 8px; border-left: 4px solid #009b3a;
+    cursor: pointer;
+}
+
+.player-item-admin:hover {
+    background: #e9ecef;
+}
+
+.player-balance {
+    background: #009b3a; color: white; padding: 2px 8px;
+    border-radius: 10px; font-size: 0.8rem;
+}
